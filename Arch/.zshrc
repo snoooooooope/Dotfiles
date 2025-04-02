@@ -5,16 +5,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# fzf
+source <(fzf --zsh)
 
-# Hyprland
-if [ "$(tty)" = "/dev/tty1" ];then
-    exec Hyprland
-fi
+# z.lua
+eval "$(lua ~/Build/z.lua/z.lua --init zsh enhanced once fzf)"
+
+# Zellij
+export ZELLIJ_AUTO_EXIT=false;
+export ZELLIJ_AUTO_ATTACH=true;
+eval "$(zellij setup --generate-auto-start zsh)"
 
 # Zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zstyle ":completion:*:commands" rehash 1
+
 
 #setopt
 setopt APPEND_HISTORY;
@@ -37,18 +44,20 @@ alias depcheck="pacman -Qdt"
 alias depclean="sudo pacman -Qdtq | sudo pacman -Rns -"
 alias pakin="pacman -Q | wc -l"
 alias font-family="fc-list : family | sort | uniq"
+alias zrt="zellij action rename-tab"
+alias zrp="zellij action rename-pane"
 
 # Env
 eval "$(starship init zsh)"
-eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once fzf)"
 
 # Paths
-# export PATH=$PATH:~/Build/nb
+export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/Build/zig
 
 # Defaults
-export EDITOR=helix;
+export EDITOR=nvim;
 export TERMINAL=kitty;
-export TERM=kitty;
-export VISUAL=helix;
+# export TERM=kitty;
+# export VISUAL=helix;
 export MANPAGER="sh -c 'col -bx | bat -l man -p'";
 export MANROFFOPT="-c";

@@ -11,6 +11,12 @@ alias hx helix
 ## GIT ##
 abbr -a --set-cursor='%' gcm 'git commit -m "%"'
 abbr -a gaa 'git add .'
+abbr -a gst 'git status'
+
+## MERCURIAL ##
+abbr -a --set-cursor='%' hgcm 'hg commit -m "%"'
+abbr -a hga 'hg add .'
+abbr -a hgs 'hg status'
 
 ## PACMAN ##
 abbr -a pcl 'sudo pacman -Sc'
@@ -28,6 +34,7 @@ abbr -a jf 'sudo journalctl -f -u'
 abbr -a jb 'sudo journalctl -b -u'
 abbr -a txvf 'tar -xvf'
 abbr -a tcvf 'tar -cvf'
+abbr -a font-family 'fc-list : family | sort | uniq'
 
 ## FISH ##
 abbr -a path_list 'echo $fish_user_paths | tr " " "\n" | nl'

@@ -1,4 +1,4 @@
-name: Mirror Sourcehut Repo
+name: Mirror Sourcehut Repo (Cache test)
 
 on:
   workflow_dispatch:

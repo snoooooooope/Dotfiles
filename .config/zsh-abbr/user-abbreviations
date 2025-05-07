@@ -1,0 +1,30 @@
+## GIT ##
+abbr 'gcm'='git commit -m'
+abbr 'gaa'='git add .'
+abbr 'gst'='git status'
+
+## MERCURIAL ##
+abbr 'hcm'='hg commit -m'
+abbr 'hga'='hg add .'
+abbr 'hgs'='hg status'
+
+## PACMAN ##
+abbr 'pcl'='sudo pacman -Sc'
+abbr 'pdch'='pacman -Qdt'
+abbr 'pdcl'='sudo pacman -Qdtq | sudo pacman -Rns -'
+abbr 'pin'='sudo pacman -S'
+abbr 'pup'='sudo pacman -Syu'
+abbr 'psr'='pacman -Ss'
+
+## CORE ##
+abbr 'cp'='cp -i'
+abbr 'mv'='mv -i'
+abbr 'rg'='rg -i'
+abbr 'jf'='sudo journalctl -f -u'
+abbr 'jb'='sudo journalctl -b -u'
+abbr 'txvf'='tar -xvf'
+abbr 'tcvf'='tar -cvf'
+abbr 'font-family'='fc-list : family | sort | uniq'
+
+## NPM ##
+abbr 'nrd'='npm run dev'

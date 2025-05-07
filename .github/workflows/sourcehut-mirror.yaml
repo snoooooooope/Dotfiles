@@ -51,10 +51,10 @@ jobs:
           git checkout main
 
           # Merge the hg-mirror branch (we keep main's files like .github)
-          git merge -s ours hg-mirror --no-edit
+          # git merge -s ours hg-mirror --no-edit
 
           # Now bring in the content from hg-mirror, excluding .github
-          git read-tree --prefix=/ -u hg-mirror
+          # git read-tree --prefix=/ -u hg-mirror
 
           git commit -m "Merge Mercurial content into main, preserve .github"
           git push --force origin main

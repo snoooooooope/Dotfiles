@@ -1,4 +1,4 @@
-name: Mirror Mercurial Repo (Preserve .github)
+name: Mirror Sourcehut Repo
 
 on:
   workflow_dispatch:

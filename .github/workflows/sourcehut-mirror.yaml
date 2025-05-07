@@ -26,7 +26,7 @@ jobs:
       - name: Convert Mercurial repo and commit it properly
         run: |
         
-          hg clone https://hg.sr.ht/~snoooooooope/dotfiles mercurial_repo
+          hg clone https://hg.sr.ht/~snoooooooope/Dotfiles mercurial_repo
           cd repo
 
           # Create and switch to a new branch

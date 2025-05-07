@@ -25,7 +25,6 @@ alias grep="grep --color=auto"
 alias ..="cd .."
 alias ls="eza --icons=always"
 alias hx="helix"
-# Defaults
 
 # Paths (SWITCHED TO SOFT SYMLINKS FROM BUILD DIR TO /usr/bin)
 export SCRIPTS_DIR="$HOME/Documents/scripts"

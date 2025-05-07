@@ -35,7 +35,7 @@ jobs:
 
       - name: Copy files from src-git to root, preserve .github
         run: |
-          rsync -a --delete --exclude='.git' --exclude='.github' src-git/ ./
+          rsync -a --delete --exclude='.git' --exclude='.github' src-git/ ./ || [ $? -eq 24 ]
           # Optionally, preserve other files/folders by adding more --exclude
 
       - name: Commit and push changes

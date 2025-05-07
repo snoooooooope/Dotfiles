@@ -1,0 +1,57 @@
+name: Mirror Mercurial to GitHub
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: |
+        
+          sudo apt-get update
+          sudo apt-get install -y mercurial python3 git
+          git clone https://github.com/frej/fast-export.git
+
+      - name: Clone GitHub repo
+        run: |
+        
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/snoooooooope/Dotfiles.git repo
+          cd repo
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Convert Mercurial repo to Git in a separate branch
+        run: |
+        
+          hg clone https://hg.sr.ht/~snoooooooope/dotfiles mercurial_repo
+          cd repo
+          
+          # Create a new orphan branch for the Mercurial content
+          git checkout --orphan hg-mirror
+          rm -rf *
+
+          # Run the import
+          ../fast-export/hg-fast-export.sh -r ../mercurial_repo
+          git checkout HEAD -f
+          git commit --allow-empty -m "Import from Mercurial"
+
+      - name: Merge Mercurial history into main (preserving .github)
+        run: |
+        
+          cd repo
+
+          # Switch back to main
+          git checkout main
+
+          # Merge the imported Mercurial branch, keeping .github from main
+          git merge -s ours hg-mirror --no-edit
+
+          # Replace everything except .github/
+          git read-tree --prefix=/ -u hg-mirror
+
+          git commit -m "Merge Mercurial repo into main, preserve .github"
+
+          git push --force origin main

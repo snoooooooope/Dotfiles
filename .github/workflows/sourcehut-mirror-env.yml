@@ -31,7 +31,7 @@ jobs:
       - name: Clone Mercurial repo
         run: |
           ENCODED_TOKEN=$(python3 -c "import urllib.parse,os; print(urllib.parse.quote(os.environ['SH_TOKEN'].strip()))")
-          hg clone "https://x-token-auth:${{ secrets.SH_TOKEN }}@hg.sr.ht/~${{ secrets.SH_USERNAME }}/${{ secrets.SH_REPO }}" src-hg
+          hg clone "https://x-token-auth:${ENCODED_TOKEN}@hg.sr.ht/~${{ secrets.SH_USERNAME }}/${{ secrets.SH_REPO }}" src-hg
         env:
           SH_TOKEN: ${{ secrets.SH_TOKEN }}
           SH_USERNAME: ${{ secrets.SH_USERNAME }}

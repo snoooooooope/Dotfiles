@@ -25,18 +25,18 @@ jobs:
 
       - name: Convert Mercurial repo to Git in a separate branch
         run: |
-        
-          hg clone https://hg.sr.ht/~snoooooooope/Dotfiles mercurial_repo
+          hg clone https://hg.sr.ht/~snoooooooope/dotfiles mercurial_repo
           cd repo
-          
-          # Create a new orphan branch for the Mercurial content
-          git checkout --orphan hg-mirror
-          rm -rf *
 
-          # Run the import
+          # Create empty orphan branch
+          git checkout --orphan hg-mirror
+          git rm -rf . > /dev/null 2>&1 || true
+
+          # Run the Mercurial import
           ../fast-export/hg-fast-export.sh -r ../mercurial_repo
-          git checkout HEAD -f
-          git commit --allow-empty -m "Import from Mercurial"
+
+          # Create initial commit (hg-fast-export doesn't commit automatically)
+          git reset --hard
 
       - name: Merge Mercurial history into main (preserving .github)
         run: |

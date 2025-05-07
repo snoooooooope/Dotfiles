@@ -26,7 +26,7 @@ jobs:
       - name: Convert Mercurial repo to Git in a separate branch
         run: |
         
-          hg clone https://hg.sr.ht/~snoooooooope/dotfiles mercurial_repo
+          hg clone https://hg.sr.ht/~snoooooooope/Dotfiles mercurial_repo
           cd repo
           
           # Create a new orphan branch for the Mercurial content

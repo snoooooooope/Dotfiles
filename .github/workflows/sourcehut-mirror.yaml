@@ -23,35 +23,42 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Convert Mercurial repo to Git in a separate branch
+      - name: Convert Mercurial repo and commit it properly
         run: |
         
-          hg clone https://hg.sr.ht/~snoooooooope/Dotfiles mercurial_repo
+          hg clone https://hg.sr.ht/~snoooooooope/dotfiles mercurial_repo
           cd repo
 
-          # Create empty orphan branch
+          # Create and switch to a new branch
           git checkout --orphan hg-mirror
-          git rm -rf . > /dev/null 2>&1 || true
+          rm -rf *
 
-          # Run the Mercurial import
+          # Run the fast-export tool to replay Mercurial history
           ../fast-export/hg-fast-export.sh -r ../mercurial_repo
 
-          # Create initial commit (hg-fast-export doesn't commit automatically)
+          # Create actual commits from the imported history
           git reset --hard
 
-      - name: Merge Mercurial history into main (preserving .github)
+          # Make sure branch is registered
+          git checkout -b hg-mirror
+
+      - name: Merge Mercurial history into main (preserve .github)
         run: |
         
           cd repo
-
-          # Switch back to main
+          
+          # Make sure we're on main
           git checkout main
 
-          # Merge the imported Mercurial branch, keeping .github from main
+          # Merge the hg-mirror branch (we keep main's files like .github)
           git merge -s ours hg-mirror --no-edit
 
-          # Replace everything except .github/
+          # Now bring in the content from hg-mirror, excluding .github
           git read-tree --prefix=/ -u hg-mirror
+
+          git commit -m "Merge Mercurial content into main, preserve .github"
+          git push --force origin main
+
 
           git commit -m "Merge Mercurial repo into main, preserve .github"
 

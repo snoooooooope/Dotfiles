@@ -30,7 +30,7 @@ jobs:
 
       - name: Clone Mercurial repo
         run: |
-          hg clone "https://x-token-auth:${{ secrets.HG_TOKEN }}@hg.sr.ht/~${{ secrets.HG_USERNAME }}/${{ secrets.HG_REPO }}" src-hg
+          hg clone "https://x-token-auth:${{ secrets.SH_TOKEN }}@hg.sr.ht/~${{ secrets.SH_USERNAME }}/${{ secrets.SH_REPO }}" src-hg
 
       - name: Convert Mercurial to Git
         run: |

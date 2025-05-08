@@ -17,6 +17,7 @@ abbr -a gst 'git status'
 abbr -a --set-cursor='%' hgcm 'hg commit -m "%"'
 abbr -a hga 'hg add .'
 abbr -a hgs 'hg status'
+abbr -a hgp 'hg push'
 
 ## PACMAN ##
 abbr -a pcl 'sudo pacman -Sc'

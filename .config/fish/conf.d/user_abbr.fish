@@ -26,6 +26,7 @@ abbr -a pdcl 'sudo pacman -Qdtq | sudo pacman -Rns -'
 abbr -a pin 'sudo pacman -S'
 abbr -a pup 'sudo pacman -Syu'
 abbr -a psr 'pacman -Ss'
+abbr -a psi 'pacman -Si'
 
 ## CORE ##
 abbr -a cp 'cp -i'

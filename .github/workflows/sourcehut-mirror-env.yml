@@ -3,7 +3,7 @@ name: Mirror Sourcehut Repo (env test)
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 5'
+    - cron: '0 12,0 * * *'
 
 jobs:
   mirror:
@@ -25,7 +25,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y mercurial git python3
           if [ ! -d ~/fast-export ]; then
-            git clone https://github.com/frej/fast-export.git ~/fast-export
+            git clone https://github.com/snoooooooope/fast-export.git ~/fast-export
           fi
 
       - name: Clone Mercurial repo

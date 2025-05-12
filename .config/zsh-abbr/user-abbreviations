@@ -1,12 +1,14 @@
 ## GIT ##
-abbr 'gcm'='git commit -m'
-abbr 'gaa'='git add .'
-abbr 'gst'='git status'
+abbr 'gicm'='git commit -m'
+abbr 'gia'='git add .'
+abbr 'gis'='git status'
+abbr 'gip'='git push'
 
 ## MERCURIAL ##
-abbr 'hcm'='hg commit -m'
+abbr 'hgcm'='hg commit -m'
 abbr 'hga'='hg add .'
 abbr 'hgs'='hg status'
+abbr 'hgp'='hg push'
 
 ## PACMAN ##
 abbr 'pcl'='sudo pacman -Sc'
@@ -15,6 +17,7 @@ abbr 'pdcl'='sudo pacman -Qdtq | sudo pacman -Rns -'
 abbr 'pin'='sudo pacman -S'
 abbr 'pup'='sudo pacman -Syu'
 abbr 'psr'='pacman -Ss'
+abbr 'psi'='pacman -Si'
 
 ## CORE ##
 abbr 'cp'='cp -i'
